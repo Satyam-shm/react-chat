@@ -1,18 +1,12 @@
-import { auth } from "./firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Welcome from "./components/Welcome";
-import ChatBox from "./components/Chatbox";
+import React, { useEffect, useState } from "react";
+import Auth from "./components/Auth";
+import Cookies from "universal-cookie";
+import Room from "./components/Room";
 
-function App() {
-  const [user] = useAuthState(auth);
-  return (
-    <div className="App">
-      <Navbar />
-      {!user ? <Welcome /> : <ChatBox />}
-    </div>
-  );
+const cookies = new Cookies();
+
+export default function App() {
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
+
+  return isAuth ? <Room /> : <Auth setIsAuth={setIsAuth} />;
 }
-
-export default App;
