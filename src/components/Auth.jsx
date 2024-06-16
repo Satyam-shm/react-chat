@@ -17,10 +17,10 @@ export default function Auth(props) {
     }
   };
   return (
-    <div>
-      <h2>Sign in with Google</h2>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h2 className="text-2xl font-bold mb-6">Sign in with Google</h2>
       <button onClick={signInWithGoogle}>
-        <img src={GoogleLogo} alt="Google Logo" height={50} />
+        <img src={GoogleLogo} alt="Google Logo" height={50} width={400} />
       </button>
     </div>
   );
